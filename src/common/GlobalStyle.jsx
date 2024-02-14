@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import variables from './variables';
+import variables from './Variables';
 import Inter from '../fonts/Inter.woff2';
 
 export const GlobalStyle = createGlobalStyle`
