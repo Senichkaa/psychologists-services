@@ -1,3 +1,4 @@
+// import React, { useState } from 'react';
 import React from 'react';
 import {
   HeaderContainer,
@@ -13,6 +14,12 @@ import {
 } from './Header.styled';
 
 const Header = () => {
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const handleModalToggle = () => {
+  //   setIsModalOpen(!isModalOpen);
+  // };
+
   return (
     <HeaderContainer>
       <HeaderNavigation>
