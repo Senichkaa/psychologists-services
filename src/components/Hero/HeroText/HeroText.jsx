@@ -18,10 +18,10 @@ const HeroText = () => {
         guide in your own life with the help of our experienced psychologists.
       </HeroMainText>
       <HeroButton href="/">
-        Get Started{' '}
+        Get Started
         <span>
           <svg width={16} height={16}>
-            <use href={`${icons}icon-arrow`} />
+            <use href={`${icons}#icon-arrow`} />
           </svg>
         </span>
       </HeroButton>

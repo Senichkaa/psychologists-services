@@ -5,6 +5,7 @@ export const HeroPictureWrapper = styled.div`
   position: relative;
   max-width: 485px;
   margin-top: 80px;
+  z-index: -1;
 `;
 
 export const CouchImage = styled.img`
