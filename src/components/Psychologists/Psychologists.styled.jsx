@@ -9,6 +9,7 @@ export const LoadMoreButton = styled.button`
   height: 52px;
   margin: 0 auto;
   padding: 14px 48px;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;

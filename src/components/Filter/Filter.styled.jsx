@@ -28,6 +28,7 @@ export const SelectorButton = styled.button`
   width: 225px;
   height: 50px;
   padding: 14px 0px 14px 18px;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 500;
   border-radius: 14px;

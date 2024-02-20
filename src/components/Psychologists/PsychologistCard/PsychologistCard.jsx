@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import icons from '../../../assets/icons.svg';
 import {
   AboutInfo,
@@ -20,8 +20,16 @@ import {
   RatingInfo,
   ReadMoreButton,
 } from './PsychologistCard.styled';
+import Additional from 'components/Additional/Additional';
+import { AppointmentButton } from 'components/Additional/Additional.styled';
 
 const PsychologistCard = ({ doctor }) => {
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+
+  const clickReadMoreHandler = () => {
+    setIsMoreOpen(prevMoreOpen => !prevMoreOpen);
+  };
+
   return (
     <DoctorCard>
       <PhotoWrapper>
@@ -63,7 +71,20 @@ const PsychologistCard = ({ doctor }) => {
           </AdditionalPart>
         </AdditionalInfoWrapper>
         <AboutInfo>{doctor.about}</AboutInfo>
-        <ReadMoreButton>Read More</ReadMoreButton>
+        {isMoreOpen ? (
+          <>
+            <ul>
+              {doctor.reviews.map((review, index) => (
+                <Additional key={index} review={review} index={index} />
+              ))}
+            </ul>
+            <AppointmentButton>Make an appointment</AppointmentButton>
+          </>
+        ) : (
+          <ReadMoreButton onClick={clickReadMoreHandler}>
+            Read More
+          </ReadMoreButton>
+        )}
       </InfoWrapper>
     </DoctorCard>
   );

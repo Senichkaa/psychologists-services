@@ -100,7 +100,7 @@ export const PartValue = styled.span`
 
 export const AboutInfo = styled.p`
   margin-top: 24px;
-  margin-bottom: 14px;
+  margin-bottom: 48px;
   color: rgba(25, 26, 21, 0.5);
 `;
 

@@ -62,6 +62,7 @@ export const LogoText = styled(NavLink)`
 export const LogInButton = styled.button`
   text-align: center;
   padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -100,6 +101,7 @@ export const LogInButton = styled.button`
 export const RegistrationButton = styled.button`
   text-align: center;
   padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
