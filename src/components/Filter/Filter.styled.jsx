@@ -9,7 +9,7 @@ export const FilterContainer = styled.div`
 `;
 
 export const FilterSection = styled.section`
-  position: relative;
+  /* position: relative; */
   display: inline-block;
 `;
 

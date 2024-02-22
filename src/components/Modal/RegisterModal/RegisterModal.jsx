@@ -16,6 +16,12 @@ import icons from '../../../assets/icons.svg';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../../firebase';
 
+const toggleOverflow = toggle => {
+  if (toggle) {
+    document.body.style.overflow = 'hidden';
+  } else document.body.style.overflow = 'auto';
+};
+
 const RegisterModal = ({ onClose }) => {
   const validationSchema = yup.object().shape({
     name: yup.string().required(),
@@ -30,6 +36,7 @@ const RegisterModal = ({ onClose }) => {
   };
 
   useEffect(() => {
+    toggleOverflow(true);
     const onButtonPress = event => {
       if (event.code === 'Escape') {
         onClose();
@@ -38,15 +45,10 @@ const RegisterModal = ({ onClose }) => {
     document.addEventListener('keydown', onButtonPress);
 
     return () => {
+      toggleOverflow(false);
       document.removeEventListener('keydown', onButtonPress);
     };
   }, [onClose]);
-
-  //   const clickOnOverlay = event => {
-  //     if (event.currentTarget === event.target) {
-  //       onClose();
-  //     }
-  //   };
 
   const submitHandler = async (values, { formReset }) => {
     try {

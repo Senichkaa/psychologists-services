@@ -26,6 +26,12 @@ const initialValues = {
   password: '',
 };
 
+const toggleOverflow = toggle => {
+  if (toggle) {
+    document.body.style.overflow = 'hidden';
+  } else document.body.style.overflow = 'auto';
+};
+
 const LoginModal = ({ onClose }) => {
   const submitHandler = async (values, { formReset }) => {
     try {
@@ -42,6 +48,7 @@ const LoginModal = ({ onClose }) => {
   };
 
   useEffect(() => {
+    toggleOverflow(true);
     const onButtonPress = event => {
       if (event.code === 'Escape') {
         onClose();
@@ -50,6 +57,7 @@ const LoginModal = ({ onClose }) => {
     document.addEventListener('keydown', onButtonPress);
 
     return () => {
+      toggleOverflow(false);
       document.removeEventListener('keydown', onButtonPress);
     };
   }, [onClose]);

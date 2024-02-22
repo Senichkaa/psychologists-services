@@ -22,14 +22,23 @@ import {
 } from './PsychologistCard.styled';
 import Additional from 'components/Additional/Additional';
 import { AppointmentButton } from 'components/Additional/Additional.styled';
+import AppointmentModal from 'components/Modal/AppointmentModal/AppointmentModal';
 
 const PsychologistCard = ({ doctor }) => {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
 
   const clickReadMoreHandler = () => {
     setIsMoreOpen(prevMoreOpen => !prevMoreOpen);
   };
 
+  const clickAppointmentHandler = () => {
+    setIsAppointmentOpen(prevAppointmentOpen => !prevAppointmentOpen);
+  };
+
+  const closeAppointmentHandler = () => {
+    setIsAppointmentOpen(false);
+  };
   return (
     <DoctorCard>
       <PhotoWrapper>
@@ -78,7 +87,15 @@ const PsychologistCard = ({ doctor }) => {
                 <Additional key={index} review={review} index={index} />
               ))}
             </ul>
-            <AppointmentButton>Make an appointment</AppointmentButton>
+            <AppointmentButton onClick={clickAppointmentHandler}>
+              Make an appointment
+            </AppointmentButton>
+            {isAppointmentOpen && (
+              <AppointmentModal
+                doctor={doctor}
+                onClose={closeAppointmentHandler}
+              />
+            )}
           </>
         ) : (
           <ReadMoreButton onClick={clickReadMoreHandler}>
