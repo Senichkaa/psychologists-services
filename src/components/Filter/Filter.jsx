@@ -9,13 +9,14 @@ import {
   SelectorButton,
 } from './Filter.styled';
 
-const Filter = () => {
+const Filter = ({ onFilterSelect }) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
-  const optionSelectorHandler = choosedOption => {
-    setSelectedOption(choosedOption);
+  const optionSelectorHandler = chosenOption => {
+    setSelectedOption(chosenOption);
     setIsSelectOpen(false);
+    onFilterSelect(chosenOption);
   };
 
   return (

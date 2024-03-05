@@ -207,3 +207,26 @@ export const HeaderNavigation = styled.nav`
     justify-content: space-between;
   }
 `;
+
+export const Authentication = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const UserIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 14px;
+  background: ${variables.primaryMint};
+  border-radius: 10px;
+`;
+
+export const UserName = styled.p`
+  margin-right: 28px;
+  font-size: 16px;
+  font-weight: 500;
+`;
