@@ -62,7 +62,7 @@ export const Gap = styled.span`
 `;
 
 export const HeartButton = styled.button`
-  fill: white;
+  fill: ${props => (props.isClicked ? '#54BE96' : 'white')};
   stroke: black;
   background-color: transparent;
 `;

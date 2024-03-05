@@ -27,6 +27,11 @@ import AppointmentModal from 'components/Modal/AppointmentModal/AppointmentModal
 const PsychologistCard = ({ doctor }) => {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(prevState => !prevState);
+  };
 
   const clickReadMoreHandler = () => {
     setIsMoreOpen(prevMoreOpen => !prevMoreOpen);
@@ -56,7 +61,7 @@ const PsychologistCard = ({ doctor }) => {
               <Gap>|</Gap>
               Price / hour: <Price>${doctor.price_per_hour}</Price>
             </PriceInfo>
-            <HeartButton>
+            <HeartButton onClick={handleClick} isClicked={isClicked}>
               <svg width={26} height={26}>
                 <use href={`${icons}#icon-heart`} />
               </svg>
