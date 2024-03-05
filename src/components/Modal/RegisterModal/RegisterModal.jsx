@@ -50,7 +50,7 @@ const RegisterModal = ({ onClose }) => {
     };
   }, [onClose]);
 
-  const submitHandler = async (values, { formReset }) => {
+  const submitHandler = async (values, { resetForm }) => {
     try {
       const email = values.email;
       const password = values.password;
@@ -58,7 +58,7 @@ const RegisterModal = ({ onClose }) => {
       await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, { displayName: values.name });
 
-      formReset();
+      resetForm();
       onClose();
     } catch (error) {
       console.log(error);
