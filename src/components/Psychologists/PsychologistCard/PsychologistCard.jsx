@@ -33,14 +33,14 @@ const PsychologistCard = ({ doctor, favoriteHandler, component }) => {
 
   useEffect(() => {
     const unlike = onAuthStateChanged(auth, user => {
-      if (user) {
-        const userId = user.uid;
-        const storedFavorites =
-          JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
-        setIsClicked(
-          storedFavorites.some(fav => fav.avatar_url === doctor.avatar_url)
-        );
-      }
+      const userId = user.uid;
+      const favoritesInStorage =
+        JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+      setIsClicked(
+        favoritesInStorage.some(
+          favorite => favorite.avatar_url === doctor.avatar_url
+        )
+      );
     });
 
     return () => unlike();
@@ -78,17 +78,17 @@ const PsychologistCard = ({ doctor, favoriteHandler, component }) => {
       const newIsFavorite = !isClicked;
       setIsClicked(newIsFavorite);
 
-      const storedFavorites =
+      const favoritesInStorage =
         JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
 
       if (newIsFavorite) {
         localStorage.setItem(
           `favorites-${userId}`,
-          JSON.stringify([...storedFavorites, doctor])
+          JSON.stringify([...favoritesInStorage, doctor])
         );
       } else {
-        const updatedFavorites = storedFavorites.filter(
-          fav => fav.avatar_url !== doctor.avatar_url
+        const updatedFavorites = favoritesInStorage.filter(
+          favorite => favorite.avatar_url !== doctor.avatar_url
         );
         localStorage.setItem(
           `favorites-${userId}`,
