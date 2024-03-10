@@ -39,8 +39,8 @@ export const SelectorButton = styled.button`
 
 export const SelectList = styled.ul`
   position: absolute;
-  top: 100%;
-  left: 0;
+  /* top: 100%;
+  left: 0; */
   padding-right: 80px;
   padding-left: 10px;
   margin: 14px 10px 14px 0;

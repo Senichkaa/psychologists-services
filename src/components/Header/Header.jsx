@@ -85,6 +85,11 @@ const Header = () => {
           <NavigationList>
             <NavigationLink to="psychologists">Psychologists</NavigationLink>
           </NavigationList>
+          {authentication && (
+            <NavigationList>
+              <NavigationLink to="favorites">Favorites</NavigationLink>
+            </NavigationList>
+          )}
         </Navigation>
         {authentication ? (
           <Authentication>

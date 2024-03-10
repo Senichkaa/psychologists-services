@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import icons from '../../../assets/icons.svg';
 import {
   AboutInfo,
@@ -23,14 +23,48 @@ import {
 import Additional from 'components/Additional/Additional';
 import { AppointmentButton } from 'components/Additional/Additional.styled';
 import AppointmentModal from 'components/Modal/AppointmentModal/AppointmentModal';
+import { auth } from '../../../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
-const PsychologistCard = ({ doctor }) => {
+const PsychologistCard = ({ doctor, favoriteHandler, component }) => {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
-    setIsClicked(prevState => !prevState);
+    const userId = auth.currentUser?.uid;
+    if (!userId) {
+      console.log('need to log in');
+      return;
+    }
+    if (userId) {
+      const newIsFavorite = !isClicked;
+      setIsClicked(newIsFavorite);
+      console.log(newIsFavorite);
+
+      const storedFavorites =
+        JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+
+      if (newIsFavorite) {
+        localStorage.setItem(
+          `favorites-${userId}`,
+          JSON.stringify([...storedFavorites, doctor])
+        );
+      } else {
+        const updatedFavorites = storedFavorites.filter(
+          fav => fav.avatar_url !== doctor.avatar_url
+        );
+        localStorage.setItem(
+          `favorites-${userId}`,
+          JSON.stringify(updatedFavorites)
+        );
+        if (component === 'FavoritePage') {
+          favoriteHandler();
+        }
+      }
+    } else {
+      console.log('error');
+    }
   };
 
   const clickReadMoreHandler = () => {
@@ -44,6 +78,46 @@ const PsychologistCard = ({ doctor }) => {
   const closeAppointmentHandler = () => {
     setIsAppointmentOpen(false);
   };
+
+  useEffect(() => {
+    if (doctor.avatar_url) {
+      const unlike = onAuthStateChanged(auth, user => {
+        const userId = user?.uid;
+        const storedFavorites =
+          JSON.parse(localStorage.getItem(`favorites-${userId}`)) || [];
+        setIsClicked(
+          storedFavorites.some(
+            favorite => favorite.avatar_url === doctor.avatar_url
+          )
+        );
+      });
+
+      return () => unlike();
+    }
+  }, [doctor.avatar_url]);
+
+  useEffect(() => {
+    const userId = auth.currentUser?.uid;
+    if (userId) {
+      try {
+        const userChoice = JSON.parse(localStorage.getItem(userId)) || {};
+        userChoice.favorites = userChoice.favorites || [];
+
+        if (isClicked) {
+          userChoice.favorites.push(doctor.avatar_url);
+        } else {
+          userChoice.favorites = userChoice.favorites.filter(
+            id => id !== doctor.avatar_url
+          );
+        }
+
+        localStorage.setItem(userId, JSON.stringify(userChoice));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [isClicked, doctor.avatar_url]);
+
   return (
     <DoctorCard>
       <PhotoWrapper>
@@ -61,7 +135,7 @@ const PsychologistCard = ({ doctor }) => {
               <Gap>|</Gap>
               Price / hour: <Price>${doctor.price_per_hour}</Price>
             </PriceInfo>
-            <HeartButton onClick={handleClick} isClicked={isClicked}>
+            <HeartButton onClick={handleClick}>
               <svg width={26} height={26}>
                 <use href={`${icons}#icon-heart`} />
               </svg>
