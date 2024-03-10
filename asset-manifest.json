@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/psychologists-services/static/css/main.7acaea2f.css",
-    "main.js": "/psychologists-services/static/js/main.0ad9a42f.js",
+    "main.js": "/psychologists-services/static/js/main.c70bae5d.js",
     "static/js/762.797bfcfb.chunk.js": "/psychologists-services/static/js/762.797bfcfb.chunk.js",
     "static/js/386.43204d98.chunk.js": "/psychologists-services/static/js/386.43204d98.chunk.js",
     "static/js/689.bda2a47f.chunk.js": "/psychologists-services/static/js/689.bda2a47f.chunk.js",
     "static/js/29.e5bd22f8.chunk.js": "/psychologists-services/static/js/29.e5bd22f8.chunk.js",
-    "static/js/225.8f1853bf.chunk.js": "/psychologists-services/static/js/225.8f1853bf.chunk.js",
+    "static/js/225.df8d1e16.chunk.js": "/psychologists-services/static/js/225.df8d1e16.chunk.js",
     "static/media/hero.jpeg": "/psychologists-services/static/media/hero.cc8d951866cbdec472a0.jpeg",
     "static/media/Inter.woff2": "/psychologists-services/static/media/Inter.01f03178adde434fc9fa.woff2",
     "static/media/icons.svg": "/psychologists-services/static/media/icons.0f63d2511520f6f7ed54032ee109acf0.svg",
     "index.html": "/psychologists-services/index.html",
     "main.7acaea2f.css.map": "/psychologists-services/static/css/main.7acaea2f.css.map",
-    "main.0ad9a42f.js.map": "/psychologists-services/static/js/main.0ad9a42f.js.map",
+    "main.c70bae5d.js.map": "/psychologists-services/static/js/main.c70bae5d.js.map",
     "762.797bfcfb.chunk.js.map": "/psychologists-services/static/js/762.797bfcfb.chunk.js.map",
     "386.43204d98.chunk.js.map": "/psychologists-services/static/js/386.43204d98.chunk.js.map",
     "689.bda2a47f.chunk.js.map": "/psychologists-services/static/js/689.bda2a47f.chunk.js.map",
     "29.e5bd22f8.chunk.js.map": "/psychologists-services/static/js/29.e5bd22f8.chunk.js.map",
-    "225.8f1853bf.chunk.js.map": "/psychologists-services/static/js/225.8f1853bf.chunk.js.map"
+    "225.df8d1e16.chunk.js.map": "/psychologists-services/static/js/225.df8d1e16.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.0ad9a42f.js"
+    "static/js/main.c70bae5d.js"
   ]
 }
